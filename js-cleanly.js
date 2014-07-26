@@ -97,7 +97,7 @@
 
                         case ',':
                             if ((cPrev && cPrev.c === '}') && (cNext && cNext.c === '{')) {
-                                txt += '\n' + tab + '---';
+                                txt += '\n' + tab + '\t---';
                             }
 
                             if (is.parameter !== true) {
