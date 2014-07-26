@@ -5,6 +5,16 @@ Descripción
 
 Pasa un fichero .js a .js-cleanly, a continuación las diferencias entre .js y .js-cleanly:
 
+##### Uso #####
+
+```
+npm install js2cleanly
+
+var jsCleanly = require('js2cleanly.js');
+
+jsCleanly('archivoOrigen', 'archivoDestino');
+```
+
 ##### No es necesario declarar variable #####
 ##### No es necesario ; para acabar la sentencia #####
 

@@ -218,10 +218,10 @@
                 return txt;
             }
 
-            var minified = require('./minified-js.js')
+            var minified = require('./lib/minified-js.js')
             var lines = minified(dataFile);
 
-            var info = require('./info-js.js');
+            var info = require('./lib/info-js.js');
             info(lines);
 
             dataFile = writeTxt(lines);

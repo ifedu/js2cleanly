@@ -1,0 +1,20 @@
+{
+	"name": "js2cleanly",
+	"description": "js to js-cleanly",
+	"version": "0.1.2",
+	"author": "Eduardo Perez-Bermejo <ifedu@outlook.com>",
+	"maintainers": [
+		"Eduardo Perez-Bermejo <ifedu@outlook.com>"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ifedu/js2cleanly.git"
+	},
+	"keywords": [
+		"js",
+		"replacer"
+	],
+	"engines": {
+		"node": "*"
+	}
+}

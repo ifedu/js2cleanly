@@ -1,4 +1,4 @@
-var jsCleanly = require('js-cleanly.js');
+var jsCleanly = require('js2cleanly.js');
 
 jsCleanly('controller/gameox.js', 'controller/gameox.js-cleanly');
 jsCleanly('main.js', 'main.js-cleanly');
