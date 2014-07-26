@@ -5,8 +5,8 @@ Descripción
 
 Pasa un fichero .js a .js-cleanly, las diferencias entre .js-cleanly y .js visto en los siguientes ejemplos:
 
-## No es necesario declarar variable ##
-## No es necesario ; para acabar la sentencia ##
+##### No es necesario declarar variable #####
+##### No es necesario ; para acabar la sentencia #####
 
 ```javascript
 var numero = 5;
@@ -17,8 +17,8 @@ numero = 5
 ```
 
 
-## Los parámetros de una función no necesitan , para separarse. ##
-## Ni en bucles ni en funciones se necesitan {}, se anida por tabulación ##
+##### Los parámetros de una función no necesitan , para separarse. #####
+##### Ni en bucles ni en funciones se necesitan {}, se anida por tabulación #####
 *js*
 
 ```javascript
@@ -38,7 +38,7 @@ function alumno(nombre apellidos)
 ```
 
 
-## Los bucles no necesitan los paréntesis de abertura y cierre ##
+##### Los bucles no necesitan los paréntesis de abertura y cierre #####
 *js*
 
 ```javascript
@@ -62,7 +62,7 @@ else if (num > 5) && (num < 10)
 ```
 
 
-## Los objetos no necesitan {} : , ni " en las propiedades salvo que sea compuesta, la anidación será por tabulación y si es un array de objetos estos se separan con --- ##
+##### Los objetos no necesitan {} : , ni " en las propiedades salvo que sea compuesta, la anidación será por tabulación y si es un array de objetos estos se separan con --- #####
 *js*
 
 ```javascript
