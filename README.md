@@ -3,7 +3,7 @@ js2cleanly
 
 Descripción
 
-Pasa un fichero .js a .js-cleanly, las diferencias entre .js-cleanly y .js visto en los siguientes ejemplos:
+Pasa un fichero .js a .js-cleanly, a continuación las diferencias entre .js y .js-cleanly:
 
 ##### No es necesario declarar variable #####
 ##### No es necesario ; para acabar la sentencia #####
@@ -226,8 +226,6 @@ else if (num > 5) && (num < 10)
 (function()
     'use strict'
     app.provider('threeInRay' function()
-        i
-        j
         columns = []
         row = 
             drawO false
