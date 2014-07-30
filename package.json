@@ -1,7 +1,7 @@
 {
 	"name": "js2cleanly",
 	"description": "js to js-cleanly",
-	"version": "0.1.2",
+	"version": "0.1.4",
 	"author": "Eduardo Perez-Bermejo <ifedu@outlook.com>",
 	"maintainers": [
 		"Eduardo Perez-Bermejo <ifedu@outlook.com>"
