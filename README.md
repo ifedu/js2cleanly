@@ -3,20 +3,24 @@ js2cleanly
 
 Descripción
 
-Pasa un fichero .js a .js-cleanly, a continuación las diferencias entre .js y .js-cleanly:
+Pasa un fichero .js a .js-cleanly(sintaxis definida a continuación):
 
 ##### Uso #####
 
 ```
 npm install js2cleanly
+```
+var fs = require('fs');
+var file = 'file.js';
+fs.readFile(file, 'utf-8', function(err, dataFile) {
+    var jsCleanly = require('js2cleanly');
+    var dataNew = jsCleanly(dataFile);
 
-var jsCleanly = require('js2cleanly.js');
-
-jsCleanly('archivoOrigen', 'archivoDestino');
+    fs.writeFile(file + '-cleanly', dataNew);
+});
 ```
 
-##### No es necesario declarar variable #####
-##### No es necesario ; para acabar la sentencia #####
+##### No se declaran variables ni es necesario ; para acabar la sentencia #####
 
 ```javascript
 var numero = 5;
