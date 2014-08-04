@@ -12,6 +12,11 @@ module.exports = function (dataFile) {
             if (is.newLine === true) {
                 is.newLine = false;
                 txt += '\n';
+
+                if (is.doubleNewLine === true) {
+                    txt += '\n';
+                    is.doubleNewLine = false;
+                }
                 txt += tab;
             }
         }
@@ -35,9 +40,32 @@ module.exports = function (dataFile) {
                     break;
 
                 case '}':
-                    is.newLine = true;
+                    if (cPrev && cPrev.c !== '{') {
+                        is.doubleNewLine = true;
+                        is.newLine = true;
+                    }
 
                     tabDel();
+                    break;
+
+                case '[':
+                    if (cNext && cNext.c !== ']') {
+                        //is.newLine = true;
+                    }
+                    txt += '[';
+
+                    tabAdd();
+                    break;
+
+                case ']':
+                    is.newLine = false;
+
+                    tabDel();
+
+                    if (cPrev && cPrev.c !== '[') {
+                        //txt += '\n' + tab;
+                    }
+                    txt += ']';
                     break;
 
                 case '(':
@@ -75,11 +103,14 @@ module.exports = function (dataFile) {
                     if (parenthesis === 0) {
                         conditional = false;
                     }
-
                     break;
 
                 case ':':
-                    txt += ' ';
+                    if (is.case === true) {
+                        is.newLine = true;
+                    } else if (cNext && cNext.c !== '{') {
+                        txt += ' ';
+                    }
                     break;
 
                 case ';':
@@ -115,13 +146,13 @@ module.exports = function (dataFile) {
                     break;
 
                 case '=':
-                    if (cPrev && cPrev.c !== '=' && cPrev.c !== '!') {
+                    if (cPrev && cPrev.c !== '=' && cPrev.c !== '!' && cPrev.c !== '+') {
                         txt += ' ';
                     }
 
                     txt += '=';
 
-                    if (!cNext || (cNext && cNext.c !== '=')) {
+                    if (!cNext || (cNext && (cNext.c !== '=' && cNext.c !== '{'))) {
                         txt += ' ';
                     }
                     break;
@@ -141,6 +172,18 @@ module.exports = function (dataFile) {
                     break;
 
                 default:
+                    if (c.break === true) {
+                        if (is.case === true) {
+                            is.case = false;
+                            tabDel();
+                        }
+                        return;
+                    }
+
+                    if (c.else === true) {
+                        is.doubleNewLine = false;
+                    }
+
                     if (c.var === true) {
                         return;
                     }
@@ -149,10 +192,17 @@ module.exports = function (dataFile) {
                         is.for = true;
                     }
 
-                    is.var = false;
+                    if (is.var !== false) {
+                        is.var = false;
+                    }
 
                     newLine();
                     txt += c.c;
+
+                    if ((c.case === true || c.default === true) && is.case !== true) {
+                        is.case = true;
+                        tabAdd();
+                    }
                     break;
             }
         }
@@ -193,14 +243,19 @@ module.exports = function (dataFile) {
             for (var i = 0, lengthLines = lines.length; i < lengthLines; i++) {
                 var line = lines[i];
 
-                if (line.commentMultiLine === true || line.commentOneLine === true) {
-                    if (txt !== '') {
-                        txt += '\n';
+                if (line.commentOrString === true) {
+                    if (line.commentMultiLine === true || line.commentOneLine === true) {
+                        if (txt !== '') {
+                            txt += '\n';
+                        }
+
+                        txt += tab + line.txt;
+
+                        is.newLine = true;
+                    } else {
+                        newLine();
+                        txt += line.txt;
                     }
-
-                    txt += tab + line.txt;
-
-                    is.newLine = true;
 
                     continue;
                 }
